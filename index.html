@@ -1,0 +1,46 @@
+
+<p id="stats">Money
+</p>
+<script>
+var cp = 1;
+var money = 0;
+var clickerStats={
+	ClickPower: cp,
+	Money : money
+};
+var clickPower = {
+	val: cp,
+	add: function(howmany,price){
+		if(price == null){
+			price = 0;
+		}
+		if(money < price){
+			//do nothing
+		}else{
+		money = money - price;
+		cp = cp + howmany;
+		document.getElementById("stats").innerHTML = money;
+		refreshAll();
+		return cp;
+	}
+	},
+	go: function(){
+		money = money + clickPower.val;
+		document.getElementById("stats").innerHTML = money;
+		refreshAll();
+		return money;
+	}
+};
+function refreshAll(){
+		clickPower.val = cp;
+		clickerStats.ClickPower = cp;
+		clickerStats.Money = money;
+}
+var click = {
+
+};
+
+
+</script>
+<button onclick="clickPower.go()">Click Area</button>
+<button id="adp" onclick="clickPower.add(5,5)">Buy Power + 5</button>
